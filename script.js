@@ -28,6 +28,13 @@ menu.querySelectorAll('a').forEach((link) => {
 
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
 
+document.querySelectorAll('[data-logo-track]').forEach((track) => {
+  const set = track.querySelector('.logo-set');
+  const clone = set.cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true');
+  track.append(clone);
+});
+
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reduceMotion && 'IntersectionObserver' in window) {
   document.body.classList.add('motion-ready');
